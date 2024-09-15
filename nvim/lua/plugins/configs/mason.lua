@@ -1,7 +1,14 @@
 local options = {
   ensure_installed = { 
     "lua-language-server",
-    "gopls"
+    "gopls",
+    "rust-analyzer",
+    "jq", -- json
+    "stylua", -- lua,
+    "dockerfile-language-server",
+    "docker-compose-language-service",
+    "typescript-language-server",
+    "tailwindcss-language-server"
   }, -- not an option from mason.nvim
 
   PATH = "skip",

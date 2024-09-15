@@ -241,6 +241,13 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    lazy = false,
+    opts = function()
+      return require "plugins.configs.formatter"
+    end,
+  },
 }
 
 local config = require("core.utils").load_config()
