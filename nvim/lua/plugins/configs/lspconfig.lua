@@ -40,7 +40,11 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-require("lspconfig").lua_ls.setup {
+
+local lspconfig = require('lspconfig')
+local util = require("lspconfig/util")
+
+lspconfig.lua_ls.setup {
   on_init = M.on_init,
   on_attach = M.on_attach,
   capabilities = M.capabilities,
@@ -63,5 +67,26 @@ require("lspconfig").lua_ls.setup {
     },
   },
 }
+
+
+-- go stuff 
+--
+lspconfig.gopls.setup {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities,
+    cmd = { "gopls" },
+    filetypes = {"go","gomod", "gowork", "gotmpl"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+                unusedparams = true,
+            },
+        }
+    }
+}
+
 
 return M
