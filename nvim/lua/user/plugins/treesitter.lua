@@ -8,17 +8,18 @@ return {
   end,
   dependencies = {
     { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
+    'nvim-treesitter/nvim-treesitter-textobjects',
     {
       'JoosepAlviste/nvim-ts-context-commentstring',
       opts = {
-        custom_calculation = function (node, language_tree)
+        enable = true,
+        custom_calculation = function(node, language_tree)
           if vim.bo.filetype == 'blade' and language_tree._lang ~= 'javascript' then
             return '{{-- %s --}}'
           end
         end,
       },
     },
-    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   main = 'nvim-treesitter.configs',
   opts = {
@@ -67,9 +68,10 @@ return {
       enable = true,
       disable = { "yaml" }
     },
-    context_commentstring = {
-      enable = true,
-    },
+    -- context_commentstring = {
+    --   enable = true,
+    --   enable_autocmd = false,
+    -- },
     rainbow = {
       enable = true,
     },
@@ -103,5 +105,7 @@ return {
         ['.*%.blade%.php'] = 'blade',
       },
     })
+
+    vim.g.skip_ts_context_commentstring_module = true  
   end,
 }
