@@ -32,9 +32,6 @@ mkdir -p $HOME/.local/bin
 ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
 ln -sf $DOTFILES/scripts/deliver $HOME/.local/bin/deliver
 
-# NVM (Node Version Manager)
-mkdir -p $HOME/.nvm
-ln -sf $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
 
 # Oh My Zsh
 # if [ ! -d "$HOME/.oh-my-zsh" ]; then
