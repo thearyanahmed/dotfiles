@@ -49,7 +49,7 @@
   "rust-analyzer.highlightRelated.breakPoints.enable": true,
   "rust-analyzer.highlightRelated.exitPoints.enable": true,
   "rust-analyzer.highlightRelated.references.enable": true,
-  "rust-analyzer.highlightRelated.yieldPoints.enable": true,
+  "rust-analyzer.highlightRelated.yieldPoints.enable": false,
   "rust-analyzer.hover.documentation.enable": true,
   "rust-analyzer.hover.documentation.keywords.enable": true,
   "rust-analyzer.hover.links.enable": true,
