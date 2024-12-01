@@ -13,6 +13,7 @@ local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for
 vim.opt.shiftwidth = 4     -- Number of spaces to use for autoindent
 vim.opt.expandtab = true   -- Convert tabs to spaces
+vim.opt.smartindent = true -- Insert indents automatically
 
 vim.opt.cmdheight = 0
 vim.opt.shiftwidth = 4
@@ -24,7 +25,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
 vim.opt.termguicolors = true
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
