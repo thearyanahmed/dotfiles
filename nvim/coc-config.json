@@ -1,4 +1,6 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["rust","go","php","markdown"],
+
   "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
   "rust-analyzer.enable": true,
   "rust-analyzer.assist.emitMustUse": false,
@@ -88,5 +90,4 @@
   "rust-analyzer.lens.location": "above_name",
   "rust-analyzer.lens.references.adt.enable": false,
   "rust-analyzer.lens.references.enumVariant.enable": false,
-  "rust-analyzer.lens.references.method.enable": false
-}
+  "rust-analyzer.lens.references.method.enable": false}
