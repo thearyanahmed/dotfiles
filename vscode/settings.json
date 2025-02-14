@@ -1,0 +1,136 @@
+{
+    "editor.scrollBeyondLastLine": true,
+    "editor.tabSize": 4,
+    "files.autoSaveDelay": 1000,
+    "editor.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+    "files.autoSave": "afterDelay",
+    "editor.renderWhitespace": "none",
+    "editor.cursorStyle": "line-thin",
+    "editor.fontSize": 12,
+    "editor.lineHeight": 1.5,
+    // "editor.letterSpacing": 0.2,
+    "git.enabled": false,
+    "editor.lineNumbers": "on",
+    // Controls the font family.
+    // "editor.fontFamily": "Jetbrains Mono Nerd Font", // "Operator Mono",
+    // "editor.fontFamily": "DankMono Nerd Font", // "Operator Mono",
+    "editor.fontFamily": "FiraCode Nerd Font Light", // "Operator Mono",
+    // "editor.fontFamily": "Inconsolata",
+    // "editor.fontFamily": "Cousine Nerd Font Mono",
+    // "editor.fontFamily": "Cascadia Code",
+    // "editor.fontFamily": "Source Code Pro Medium",
+    // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
+    "workbench.colorTheme": "Everforest Dark",
+    "editor.fontWeight": 500,
+    // Enables font ligatures
+    "editor.fontLigatures": true,
+    // Controls if file decorations should use badges.
+    "explorer.decorations.badges": false,
+    "git.decorations.enabled": false,
+    "zenMode.hideActivityBar": true,
+    "zenMode.hideLineNumbers": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.silentNotifications": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.list.smoothScrolling": true,
+    "editor.suggestSelection": "first",
+    "editor.minimap.enabled": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.overviewRulerBorder": false,
+    "workbench.statusBar.visible": false,
+    "outline.showNumbers": false,
+    "breadcrumbs.showNumbers": false,
+    "breadcrumbs.showObjects": false,
+    "breadcrumbs.showOperators": false,
+    "breadcrumbs.showPackages": false,
+    "breadcrumbs.showProperties": false,
+    "breadcrumbs.showStrings": false,
+    "breadcrumbs.showStructs": false,
+    "breadcrumbs.showTypeParameters": false,
+    "breadcrumbs.showVariables": false,
+    "breadcrumbs.enabled": false,
+    "notebook.breadcrumbs.showCodeCells": false,
+    "breadcrumbs.icons": false,
+    "breadcrumbs.showArrays": false,
+    "breadcrumbs.showBooleans": false,
+    "breadcrumbs.showConstants": false,
+    "breadcrumbs.showNull": false,
+    "breadcrumbs.showNamespaces": false,
+    "breadcrumbs.showModules": false,
+    "breadcrumbs.showMethods": false,
+    "breadcrumbs.showKeys": false,
+    "breadcrumbs.showInterfaces": false,
+    "breadcrumbs.showFunctions": false,
+    "breadcrumbs.showFiles": false,
+    "breadcrumbs.showFields": false,
+    "breadcrumbs.showEvents": false,
+    "breadcrumbs.showEnums": false,
+    "breadcrumbs.showEnumMembers": false,
+    "breadcrumbs.showClasses": false,
+    "breadcrumbs.showConstructors": false,
+    "workbench.tree.indent": 26,
+    "diffEditor.renderIndicators": false,
+    "workbench.editor.enablePreview": false,
+    "search.useIgnoreFiles": false,
+    "zenMode.fullScreen": true,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "workbench.colorCustomizations": {
+        // "editorGroup.border": "#2E353B"
+    },
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "workbench.tips.enabled": false,
+    "explorer.confirmDelete": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.tokenColorCustomizations": {
+        // hello
+        // "comments": "#2e2e2e4d"
+        "textMateRules": [
+            {
+                "scope": [
+                    "keyword",
+                    "variable.language"
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "workbench.editor.centeredLayoutAutoResize": false,
+    "zenMode.centerLayout": true,
+    "go.enableCodeLens": {
+        "runtest": false
+    },
+    "editor.codeLens": false,
+    "[ruby]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.semanticHighlighting.enabled": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "go.toolsManagement.autoUpdate": true,
+    "editor.formatOnSave": true,
+    "window.zoomLevel": 1,
+    "editor.accessibilitySupport": "off",
+    "terminal.integrated.env.osx": {
+        "CW_NEW_SESSION": "1"
+    },
+    "git.defaultBranchName": "master",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.stickyScroll.enabled": false,
+    "makefile.configureOnOpen": false,
+}
+
