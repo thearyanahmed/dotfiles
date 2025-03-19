@@ -24,10 +24,12 @@ vim.opt.smartindent = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
+vim.opt.hlsearch = true --Set highlight on search
 vim.opt.termguicolors = true
 vim.opt.spell = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.updatetime = 250 --Decrease update time
 vim.opt.wrap = false
 vim.opt.breakindent = true -- maintain indent when wrapping indented lines
 vim.opt.linebreak = true -- wrap at word boundaries
@@ -57,6 +59,37 @@ vim.opt.secure = true
 vim.opt.titlestring = '%f // nvim'
 vim.opt.inccommand = 'split'
 
+-- Disable arrow keys in normal mode
+vim.keymap.set('n', '<Up>', '<NOP>')
+vim.keymap.set('n', '<Down>', '<NOP>')
+vim.keymap.set('n', '<Left>', '<NOP>')
+vim.keymap.set('n', '<Right>', '<NOP>')
+
+-- Disable arrow keys in insert mode
+vim.keymap.set('i', '<Up>', '<NOP>')
+vim.keymap.set('i', '<Down>', '<NOP>')
+vim.keymap.set('i', '<Left>', '<NOP>')
+vim.keymap.set('i', '<Right>', '<NOP>')
+
+-- Disable arrow keys in visual mode
+vim.keymap.set('v', '<Up>', '<NOP>')
+vim.keymap.set('v', '<Down>', '<NOP>')
+vim.keymap.set('v', '<Left>', '<NOP>')
+vim.keymap.set('v', '<Right>', '<NOP>')
+
+-- Disable arrow keys in command-line mode
+vim.keymap.set('c', '<Up>', '<NOP>')
+vim.keymap.set('c', '<Down>', '<NOP>')
+vim.keymap.set('c', '<Left>', '<NOP>')
+vim.keymap.set('c', '<Right>', '<NOP>')
+
+-- Highlight on yank
+vim.cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]]
 
 -- bootstrap lazy.nvim!
 if not vim.loop.fs_stat(lazypath) then
