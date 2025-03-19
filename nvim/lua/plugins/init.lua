@@ -12,7 +12,7 @@ local default_plugins = {
         lazy = false,
         config = function()
             -- This is where you can add configuration for coc.nvim if needed
-            -- vim.cmd([[ 
+            -- vim.cmd([[
             --   " Set up basic configuration for coc.nvim
             --   autocmd BufEnter * silent! CocInfo
             -- ]])
@@ -28,7 +28,7 @@ local default_plugins = {
         end,
     },
 
-    -- autosave 
+    -- autosave
     {
         "Pocco81/auto-save.nvim",
 
@@ -319,6 +319,31 @@ local default_plugins = {
             return require "plugins.configs.formatter"
         end,
     },
+
+    {
+        "savq/melange-nvim",
+        config = function()
+            require("melange").setup({
+                -- Your melange configurations here.
+                -- See the full configuration example from my previous response.
+            })
+        end,
+    },
+    {
+        "goolord/alpha-nvim",
+        dependencies = { 'echasnovski/mini.icons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+          local startify = require("alpha.themes.startify")
+          -- available: devicons, mini, default is mini
+          -- if provider not loaded and enabled is true, it will try to use another provider
+          startify.file_icons.provider = "devicons"
+          require("alpha").setup(
+            startify.config
+          )
+        end,
+    }
+
 }
 
 -- Load additional plugins from user configuration if any
