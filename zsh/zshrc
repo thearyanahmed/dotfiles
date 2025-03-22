@@ -90,15 +90,16 @@ unsetopt sharehistory
 #--------------------------------------------------------------------------
 
 alias vim="nvim"
-alias copy="xclip -selection clipboard"
-alias paste="xclip -o -selection clipboard"
+alias cpy="xclip -selection clipboard"
+alias pst="xclip -o -selection clipboard"
 alias cat="bat"
 alias webcam="gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video2"
-alias sail='[ -f sail ] && sail || vendor/bin/sail'
 
 # Laravel
 alias a="artisan"
+alias art="artisan"
 alias tinker="artisan tinker"
+alias sail='[ -f sail ] && sail || vendor/bin/sail'
 alias seed="artisan db:seed"
 alias serve="artisan serve"
 alias mfs="artisan migrate:fresh --seed"
@@ -124,10 +125,11 @@ nah() {
 alias d="docker"
 alias dc="docker compose"
 
-open () {
-    xdg-open $* > /dev/null 2>&1
-}
+# open () {
+#     xdg-open $* > /dev/null 2>&1
+# }
 
+# PHP Stuff
 composer-link() {
     composer config minimum-stability dev
     local package=`echo $1 | sed -nr 's/.*\/([^\/]+)$/\1/p'`
