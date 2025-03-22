@@ -5,9 +5,15 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Zsh
 # ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 
+
+if [ ! -f "$PRIVATE_FILE" ]; then
+    ln -sf $DOTFILES/zsh/private $HOME/.private
+    echo "Private file initiated at ~/.private . Make sure to source your private file into your $shell_rc"
+fi
+
 # Neovim
-rm -rf $HOME/.config/nvim
-ln -s $DOTFILES/nvim $HOME/.config/nvim
+# rm -rf $HOME/.config/nvim
+# ln -s $DOTFILES/nvim $HOME/.config/nvim
 
 # Kitty
 # rm -rf $HOME/.config/kitty
@@ -28,10 +34,13 @@ ln -s $DOTFILES/phpactor $HOME/.config/phpactor
 # Scripts
 mkdir -p $HOME/.local/bin
 
-ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
-ln -sf $DOTFILES/scripts/deliver $HOME/.local/bin/deliver
+# ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
+# ln -sf $DOTFILES/scripts/deliver $HOME/.local/bin/deliver
 
 # Oh My Zsh
 # if [ ! -d "$HOME/.oh-my-zsh" ]; then
 #     KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# fi
+# f>> 
+
+
+echo ""
