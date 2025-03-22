@@ -12,8 +12,8 @@ if [ ! -f "$PRIVATE_FILE" ]; then
 fi
 
 # Neovim
-# rm -rf $HOME/.config/nvim
-# ln -s $DOTFILES/nvim $HOME/.config/nvim
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/nvim $HOME/.config/nvim
 
 # Kitty
 # rm -rf $HOME/.config/kitty
@@ -23,8 +23,12 @@ fi
 ln -sf $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 
 # Git
+echo "
+Skipping git to avoid overwriting existing configuration.
+If you want to use these config, back up your current global git config, uncomment the following 
+line and rerun.
+"
 # ln -sf $DOTFILES/git/gitconfig $HOME/.gitconfig
-echo "Skipping git to avoid overwriting existing configuration"
 ln -sf $DOTFILES/git/gitignore_global $HOME/.gitignore_global
 
 # Phpactor
@@ -34,8 +38,7 @@ ln -s $DOTFILES/phpactor $HOME/.config/phpactor
 # Scripts
 mkdir -p $HOME/.local/bin
 
-# ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
-# ln -sf $DOTFILES/scripts/deliver $HOME/.local/bin/deliver
+ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
 
 # Oh My Zsh
 # if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -43,4 +46,4 @@ mkdir -p $HOME/.local/bin
 # f>> 
 
 
-echo ""
+echo "Setup complete"
