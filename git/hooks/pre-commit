@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# pre-commit hook
 # Set the path to the file you want to process
 FILE_PATH="zsh/private"
 
@@ -7,6 +8,14 @@ FILE_PATH="zsh/private"
 if [ ! -f "$FILE_PATH" ]; then
   echo "Error: File '$FILE_PATH' not found."
   exit 1
+fi
+
+# Create a backup of the original file
+ORIGINAL_FILE_PATH="private.original"
+
+# Check if the original backup file exists. If it does not, create it.
+if [ ! -f "$ORIGINAL_FILE_PATH" ]; then
+  cp "$FILE_PATH" "$ORIGINAL_FILE_PATH"
 fi
 
 # Check if the file has been modified in the staging area

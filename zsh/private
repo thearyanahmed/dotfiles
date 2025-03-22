@@ -1,6 +1,1 @@
-# Aryan's Private Files" >> $PRIVATE_FILE;
-# This file is source controller. However, the values are stripped using" >> $PRIVATE_FILE;
-## a pre-commit hook: https://github.com/thearyanahmed/dotfiles/blob/master/git/hooks/pre-commit" >> $PRIVATE_FILE;
-
-
 SECRET_API_TOKEN=""
