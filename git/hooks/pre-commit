@@ -10,19 +10,17 @@ if [ ! -f "$FILE_PATH" ]; then
   exit 1
 fi
 
-# Create a backup of the original file
-ORIGINAL_FILE_PATH="private.original"
-
-# Check if the original backup file exists. If it does not, create it.
-if [ ! -f "$ORIGINAL_FILE_PATH" ]; then
-  cp "$FILE_PATH" "$ORIGINAL_FILE_PATH"
-fi
 
 # Check if the file has been modified in the staging area
 if ! git diff --cached --name-only | grep -q "$FILE_PATH"; then
   echo "File '$FILE_PATH' not modified. Skipping secret stripping."
   exit 0
 fi
+
+# Create a backup of the original file
+ORIGINAL_FILE_PATH="private.original"
+# backup
+cat "$FILE_PATH" > "$ORIGINAL_FILE_PATH"
 
 # Create a temporary file to store the modified content
 TEMP_FILE=$(mktemp)
