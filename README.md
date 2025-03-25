@@ -28,3 +28,5 @@ Tmux prefix key `CTRL+space`, which I'll refer as Leader or L. And these + keys 
 6. L+s: List all the sesions
 7. L+~(h|j|k|l) to switch between panes
 8. L+x to close pane
+9. L+, to rename a window
+10. L+$ to rename session
