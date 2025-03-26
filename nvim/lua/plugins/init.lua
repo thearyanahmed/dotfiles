@@ -105,17 +105,17 @@ local default_plugins = {
         end,
     },
 
-    -- Icons for file types
-    {
-        "nvim-tree/nvim-web-devicons",
-        opts = function()
-            return { override = require "nvchad.icons.devicons" }
-        end,
-        config = function(_, opts)
-            dofile(vim.g.base46_cache .. "devicons")
-            require("nvim-web-devicons").setup(opts)
-        end,
-    },
+    -- -- Icons for file types
+    -- {
+    --     "nvim-tree/nvim-web-devicons",
+    --     opts = function()
+    --         return { override = require "nvchad.icons.devicons" }
+    --     end,
+    --     config = function(_, opts)
+    --         dofile(vim.g.base46_cache .. "devicons")
+    --         require("nvim-web-devicons").setup(opts)
+    --     end,
+    -- },
 
     -- Indentation guides
     {
@@ -147,18 +147,18 @@ local default_plugins = {
         end,
     },
 
-    -- Git integration
-    {
-        "lewis6991/gitsigns.nvim",
-        event = "User FilePost",
-        opts = function()
-            return require("plugins.configs.others").gitsigns
-        end,
-        config = function(_, opts)
-            dofile(vim.g.base46_cache .. "git")
-            require("gitsigns").setup(opts)
-        end,
-    },
+    -- -- Git integration
+    -- {
+    --     "lewis6991/gitsigns.nvim",
+    --     event = "User FilePost",
+    --     opts = function()
+    --         return require("plugins.configs.others").gitsigns
+    --     end,
+    --     config = function(_, opts)
+    --         dofile(vim.g.base46_cache .. "git")
+    --         require("gitsigns").setup(opts)
+    --     end,
+    -- },
 
     -- Mason for managing external editor tooling
     {
@@ -341,6 +341,13 @@ local default_plugins = {
           require("alpha").setup(
             startify.config
           )
+        end,
+    },
+    {
+        "EdenEast/nightfox.nvim",
+
+        config = function()
+            vim.cmd("colorscheme dayfox")
         end,
     }
 
