@@ -83,6 +83,11 @@ vim.keymap.set('c', '<Down>', '<NOP>')
 vim.keymap.set('c', '<Left>', '<NOP>')
 vim.keymap.set('c', '<Right>', '<NOP>')
 
+
+-- Key mappings for Telescope LSP symbols
+vim.keymap.set('n', '<Space>ds', '<cmd>Telescope lsp_document_symbols<CR>', { desc = 'Document Symbols' })
+vim.keymap.set('n', '<Space>ws', '<cmd>Telescope lsp_workspace_symbols<CR>', { desc = 'Workspace Symbols' })
+
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight
@@ -92,10 +97,10 @@ vim.cmd [[
 ]]
 
 -- bootstrap lazy.nvim!
-if not vim.loop.fs_stat(lazypath) then
-  require("core.bootstrap").gen_chadrc_template()
-  require("core.bootstrap").lazy(lazypath)
-end
+-- if not vim.loop.fs_stat(lazypath) then
+--   require("core.bootstrap").gen_chadrc_template()
+--   require("core.bootstrap").lazy(lazypath)
+-- end
 
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)

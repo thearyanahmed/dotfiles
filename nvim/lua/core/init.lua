@@ -94,13 +94,7 @@ autocmd("BufWritePost", {
 
     -- statusline
     require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
-    vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
-
-    -- tabufline
-    if config.ui.tabufline.enabled then
-      require("plenary.reload").reload_module "nvchad.tabufline.modules"
-      vim.opt.tabline = "%!v:lua.require('nvchad.tabufline.modules').run()"
-    end
+    -- vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
 
     require("base46").load_all_highlights()
     -- vim.cmd("redraw!")

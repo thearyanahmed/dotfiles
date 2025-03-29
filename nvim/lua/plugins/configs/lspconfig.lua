@@ -67,7 +67,7 @@ lspconfig.lua_ls.setup {
     }
 }
 
--- go stuff 
+-- go stuff
 --
 lspconfig.gopls.setup {
     on_attach = M.on_attach,
@@ -86,7 +86,7 @@ lspconfig.gopls.setup {
     }
 }
 
--- rust stuff 
+-- rust stuff
 lspconfig.rust_analyzer.setup({
   on_attach = M.on_attach,
   capabilities = M.capabilities,

@@ -9,7 +9,7 @@ local options = {
     "docker-compose-language-service",
     "typescript-language-server",
     "tailwindcss-language-server",
-    "clangd"
+    "clangd",
   }, -- not an option from mason.nvim
 
   PATH = "skip",
