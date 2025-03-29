@@ -169,3 +169,17 @@ if [[ $- == *i* && $0 == '/usr/bin/zsh' ]]; then
 fi
 
 # vim: nospell
+
+_light() {
+    cat ~/dev/thearyanahmed/dotfiles/ghostty/theme:rosepinedawn.config >
+    ~/dev/thearyanahmed/dotfiles/ghostty/current.config;
+
+    echo "now presse Shift + CMD + , to reload the theme"
+}
+
+_dark() {
+    cat ~/dev/thearyanahmed/dotfiles/ghostty/theme:miasma.config >
+    ~/dev/thearyanahmed/dotfiles/ghostty/current.config;
+
+    echo "now presse Shift + CMD + , to reload the theme"
+}

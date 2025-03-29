@@ -96,6 +96,9 @@ $           Rename the current session.
                        Resize the current pane in steps of five cells.
 
 
+## Ghostty Config
+Use `ln -sf ghostty/ghostty.conf ~/ghostty/current.conf` to link the config file.
+
 ## CoC rust
 ```txt
 
