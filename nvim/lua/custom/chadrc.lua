@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-    theme = 'everforest_light',
+    theme = 'everforest',
 }
 
 return M

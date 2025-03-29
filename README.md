@@ -3,18 +3,18 @@ Home sweet home
 
 
 ## Private file
-The private file is source controlled only for the keys, but the values will be stripped away. So, 
+The private file is source controlled only for the keys, but the values will be stripped away. So,
 ```
 # Private file
 SECRET_API_KEY="don't share the password"
 ```
 
-Will become 
+Will become
 ```
 # Private file
 SECRET_API_KEY=""
 ```
-Checkout `git/hooks/pre-commit` for the source code. If you wish to use it, in your local repo, put the file to 
+Checkout `git/hooks/pre-commit` for the source code. If you wish to use it, in your local repo, put the file to
 `.git/hooks/pre-commit`
 
 ## Tmux
@@ -94,3 +94,111 @@ $           Rename the current session.
            M-Up, M-Down
            M-Left, M-Right
                        Resize the current pane in steps of five cells.
+
+
+## CoC rust
+```txt
+
+  // Enable the rust-analyzer extension
+  "rust-analyzer.enable": true,
+  // Don't emit #[must_use] when generating code - power users typically know when to add this themselves
+  "rust-analyzer.assist.emitMustUse": false,
+  // Use unimplemented!() instead of todo!() for fill expressions - better for production code
+  "rust-analyzer.assist.expressionFillDefault": "unimplemented",
+  // Enable cache priming for faster startup after initial load
+  "rust-analyzer.cachePriming.enable": true,
+  "rust-analyzer.cachePriming.numThreads": 0, // Auto-detect number of threads
+  // Essential cargo settings for power users
+  "rust-analyzer.cargo.autoreload": true,
+  "rust-analyzer.cargo.buildScripts.enable": true,
+  "rust-analyzer.cargo.buildScripts.invocationLocation": "workspace",
+  "rust-analyzer.cargo.buildScripts.invocationStrategy": "per_workspace", // More efficient for large projects
+  "rust-analyzer.cargo.buildScripts.useRustcWrapper": true,
+  // Uncomment and customize if you use specific features often
+  // "rust-analyzer.cargo.features": "your-common-features",
+  "rust-analyzer.cargo.noDefaultFeatures": false,
+  "rust-analyzer.cargo.sysroot": "discover",
+  // Enhanced checking settings for power users
+  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.check.command": "clippy", // Use clippy instead of check for better lints
+  "rust-analyzer.check.extraArgs": [
+    "--",
+    "-W",
+    "clippy::all",
+    "-W",
+    "clippy::pedantic"
+  ], // Strict linting
+  "rust-analyzer.check.invocationStrategy": "per_workspace", // Faster for large workspaces
+  "rust-analyzer.checkOnSave": true,
+  // Smart completion settings
+  "rust-analyzer.completion.autoimport.enable": true,
+  "rust-analyzer.completion.autoself.enable": true,
+  "rust-analyzer.completion.callable.snippets": "fill_arguments",
+  "rust-analyzer.completion.limit": 200, // Higher limit for more options
+  "rust-analyzer.completion.postfix.enable": true,
+  // Enable editing private fields from test modules
+  "rust-analyzer.completion.privateEditable.enable": true,
+  // Diagnostics tuning
+  "rust-analyzer.diagnostics.enable": true,
+  "rust-analyzer.diagnostics.experimental.enable": true, // Power users can handle experimental features
+  // Add specific warning codes you often want to treat differently, e.g.:
+  // "rust-analyzer.diagnostics.warningsAsInfo": ["unused_variables"],
+  // Performance optimization
+  "rust-analyzer.files.excludeDirs": [
+    "target",
+    ".git",
+    "node_modules",
+    "dist"
+  ],
+  "rust-analyzer.files.watcher": "client",
+  // Enhanced code highlighting
+  "rust-analyzer.highlightRelated.breakPoints.enable": true,
+  "rust-analyzer.highlightRelated.exitPoints.enable": true,
+  "rust-analyzer.highlightRelated.references.enable": true,
+  "rust-analyzer.highlightRelated.yieldPoints.enable": true, // Useful for async code
+  // Hover settings
+  "rust-analyzer.hover.documentation.enable": true,
+  "rust-analyzer.hover.documentation.keywords.enable": true,
+  "rust-analyzer.hover.links.enable": true,
+  // Import organization for clean code
+  "rust-analyzer.imports.granularity.enforce": true, // Enforce consistent style
+  "rust-analyzer.imports.granularity.group": "module", // More specific than crate for power users
+  "rust-analyzer.imports.group.enable": true,
+  "rust-analyzer.imports.merge.glob": true,
+  "rust-analyzer.imports.prefix": "crate", // More idiomatic Rust
+  // Inlay hints - carefully tuned for power users
+  "rust-analyzer.inlayHints.bindingModeHints.enable": false, // Experienced users recognize bindings
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": true,
+  "rust-analyzer.inlayHints.closingBraceHints.minLines": 15, // Lower threshold for large files
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "with_block", // Show for multi-line closures
+  "rust-analyzer.inlayHints.discriminantHints.enable": "fieldless", // Helpful for C-like enums
+  "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "always", // Helpful for ref/deref clarity
+  "rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": false,
+  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial", // Show non-obvious lifetime elisions
+  "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+  "rust-analyzer.inlayHints.maxLength": 50, // Longer hints for power users who can parse them
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.inlayHints.reborrowHints.enable": "mutable", // Show mutable reborrows which are easy to miss
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
+  "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
+  // Code actions
+  "rust-analyzer.joinLines.joinAssignments": true,
+  "rust-analyzer.joinLines.joinElseIf": true,
+  "rust-analyzer.joinLines.removeTrailingComma": true,
+  "rust-analyzer.joinLines.unwrapTrivialBlock": true,
+  // Code lenses for quick access to run/debug/implementations
+  "rust-analyzer.lens.debug.enable": true,
+  "rust-analyzer.lens.enable": true,
+  "rust-analyzer.lens.forceCustomCommands": true,
+  "rust-analyzer.lens.implementations.enable": true,
+  "rust-analyzer.lens.location": "above_name",
+  // Turn these on if you need to frequently check references
+  "rust-analyzer.lens.references.adt.enable": true,
+  "rust-analyzer.lens.references.enumVariant.enable": true,
+  "rust-analyzer.lens.references.method.enable": true,
+  // Adjust manually if you have large macro-heavy projects
+  // "rust-analyzer.procMacro.enable": true,
+  // "rust-analyzer.procMacro.attributes.enable": true
+```

@@ -343,14 +343,18 @@ local default_plugins = {
           )
         end,
     },
-    {
-        "EdenEast/nightfox.nvim",
-
-        config = function()
-            vim.cmd("colorscheme dayfox")
+      {
+        'saecki/crates.nvim',
+        ft = {"toml"},
+        config = function(_, opts)
+          local crates  = require('crates')
+          crates.setup(opts)
+          require('cmp').setup.buffer({
+            sources = { { name = "crates" }}
+          })
+          crates.show()
         end,
-    }
-
+      },
 }
 
 -- Load additional plugins from user configuration if any
