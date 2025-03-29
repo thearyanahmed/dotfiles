@@ -37,7 +37,7 @@ local default_plugins = {
                 enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
                 execution_message = {
                     message = function() -- message to print on save
-                        return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+                        return ("auto saved @ " .. vim.fn.strftime("%H:%M:%S"))
                     end,
                     dim = 0.18, -- dim the color of `message`
                     cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
@@ -130,6 +130,16 @@ local default_plugins = {
             dofile(vim.g.base46_cache .. "blankline")
             require("indent_blankline").setup(opts)
         end,
+    },
+
+    -- Status line plugin
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            local cfg = require("plugins.configs.lualine")
+            require("plugins.configs.lualine").setup(cfg)
+        end
     },
 
     -- Treesitter for better syntax highlighting
@@ -355,6 +365,11 @@ local default_plugins = {
           crates.show()
         end,
       },
+
+    {
+        "github/copilot.vim",
+        lazy = false,
+    }
 }
 
 -- Load additional plugins from user configuration if any

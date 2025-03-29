@@ -19,8 +19,8 @@ opt.cursorline = true
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
+opt.tabstop = 4
+opt.softtabstop = 4
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
@@ -93,7 +93,7 @@ autocmd("BufWritePost", {
     vim.g.transparency = config.ui.transparency
 
     -- statusline
-    require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
+    -- require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
     -- vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
 
     require("base46").load_all_highlights()
