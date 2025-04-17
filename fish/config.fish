@@ -106,8 +106,13 @@ function rebase
         git rebase -i origin/$argv[1]
     end
 end
-
-alias add "git add"
+function add
+    if test (count $argv) -eq 0
+        git add .
+    else
+        git add $argv
+    end
+end
 alias com "git commit -m"
 alias ga "git add .; git commit -m $argv"
 alias gp "git push"
@@ -280,3 +285,5 @@ function fish_prompt
     echo -n " "
     set_color normal
 end
+# Enable vim keybindings for Fish shell
+fish_vi_key_bindings
