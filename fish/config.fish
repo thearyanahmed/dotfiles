@@ -266,3 +266,17 @@ function ff
         cd "$selected"
     end
 end
+function fish_prompt
+    set_color cyan
+    echo -n "thearyanahmed"
+    set_color yellow
+    echo -n "#"
+    set_color green
+    # echo -n " \$ "
+    set_color green
+    echo -n " /"
+    set_color blue
+    echo -n (basename $PWD)
+    echo -n " "
+    set_color normal
+end
