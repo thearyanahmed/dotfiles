@@ -1,4 +1,7 @@
 # This configuration file is for the Fish shell and contains various environment variable settings, aliases, and functions.
+source $HOME/.secrets/secrets.fish
+set -gx LESS '-R'
+alias grep "grep --color=auto"
 
 # PATH Configuration:
 # - Adds `/usr/local/bin`, `/usr/local/sbin`, `/opt/homebrew/bin`, `/opt/homebrew/sbin`, and MySQL 8.0 binary paths to the PATH environment variable.
@@ -105,8 +108,8 @@ function rebase
 end
 
 alias add "git add"
-alias commit "git commit -m"
 alias com "git commit -m"
+alias ga "git add .; git commit -m $argv"
 alias gp "git push"
 alias gs "git status"
 function wip
@@ -184,5 +187,82 @@ function checkout
         git checkout -b $argv[1]
     else
         git checkout $argv[1]
+    end
+end
+
+function nah
+    git reset --hard
+
+    if test "$argv[1]" = "-f"
+        git clean -df
+    end
+end
+
+function cdw
+    set base_path $CTHULHU_BASE_PATH
+
+    switch $argv[1]
+        case "e2e"
+            cd $CTHULHU_E2E
+        case "appsvc"
+            cd $CTHULHU_APPSVC
+        case "*"
+            cd $base_path
+    end
+end
+
+alias vi "nvim"
+alias ls "eza -l $argv"
+alias lss "eza -l --tree $argv"
+alias killmux "tmux kill-server"
+
+if type -q tmux
+    and test -z "$TMUX"
+        tmux attach -t default ^/dev/null; or tmux new-session -s default
+end
+
+alias f "fzf"
+
+function tmx
+    if test (count $argv) -eq 1
+        set selected $argv[1]
+    else
+        set items (find ~/dev -maxdepth 2 -mindepth 1 -type d)
+        set items "$items\n/tmp"
+        set selected (echo "$items" | fzf)
+    end
+
+    if test -z "$selected"
+        return
+    end
+
+    set dirname (basename "$selected" | sed 's/\./_/g')
+
+    tmux switch-client -t ="$dirname"
+    if test $status -eq 0
+        return 0
+    end
+
+    tmux new-session -c "$selected" -d -s "$dirname" && tmux switch-client -t "$dirname" || tmux new -c "$selected" -A -s "$dirname"
+end
+
+function um
+    history | fzf
+end
+
+
+alias d "pwd"
+
+function ff
+    if test (count $argv) -eq 1
+        set search_dir $argv[1]
+    else
+        set search_dir ~/dev $HOME
+    end
+
+    set selected (find $search_dir -maxdepth 2 -mindepth 1 -type d | fzf)
+
+    if test -n "$selected"
+        cd "$selected"
     end
 end
