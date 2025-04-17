@@ -1,0 +1,10 @@
+Key h = Help
+Key b = Setup
+Key s = Search
+Key f = Filter
+Key t = Tree view
+Key c = Sort by column
+Key d = Decrease priority
+Key i = Increase priority
+Key kx = Kill process
+Key q = Quit
