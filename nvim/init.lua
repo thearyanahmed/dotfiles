@@ -88,6 +88,8 @@ vim.keymap.set('c', '<Right>', '<NOP>')
 vim.keymap.set('n', '<Space>ds', '<cmd>Telescope lsp_document_symbols<CR>', { desc = 'Document Symbols' })
 vim.keymap.set('n', '<Space>ws', '<cmd>Telescope lsp_workspace_symbols<CR>', { desc = 'Workspace Symbols' })
 
+-- Livegrep args
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight

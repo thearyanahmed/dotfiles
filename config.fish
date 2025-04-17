@@ -1,0 +1,1 @@
+/Users/paryan/.config/fish/config.fish
