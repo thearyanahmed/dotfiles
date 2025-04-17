@@ -106,9 +106,13 @@ end
 
 alias add "git add"
 alias commit "git commit -m"
+alias com "git commit -m"
 alias gp "git push"
 alias gs "git status"
-
+function wip
+    git add -A
+    git commit -m "[WIP]"
+end
 # The `giff` function is a custom Fish shell function for running `git diff` with additional options.
 # It supports both interactive and non-interactive modes.
 #
