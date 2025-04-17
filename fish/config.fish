@@ -1,74 +1,44 @@
-# This configuration file is for the Fish shell and contains various environment variable settings, aliases, and functions.
+# Source the secrets file to load sensitive environment variables
 source $HOME/.secrets/secrets.fish
+
+# Set LESS environment variable to enable raw control characters
 set -gx LESS '-R'
+
+# Alias for grep with color highlighting
 alias grep "grep --color=auto"
 
-# PATH Configuration:
-# - Adds `/usr/local/bin`, `/usr/local/sbin`, `/opt/homebrew/bin`, `/opt/homebrew/sbin`, and MySQL 8.0 binary paths to the PATH environment variable.
-# - Ensures Composer's global vendor binaries are included in the PATH.
-
-# MySQL 8.0 Configuration:
-# - Sets linker flags (LDFLAGS) to include MySQL 8.0 library paths.
-# - Sets preprocessor flags (CPPFLAGS) to include MySQL 8.0 include paths.
-
-# Editor Configuration:
-# - Sets the default editor to `nvim` (Neovim).
-# - Configures Git to use `nvim` as its editor.
-# - Sets the Neovim listen address for remote communication via `/tmp/nvimsocket`.
-# - Configures Artisan to use `nvr` (Neovim Remote) as the editor for the `open-on-make` feature.
-
-# FZF Configuration:
-# - Sets the default FZF command to use `ag` (The Silver Searcher) for file searching.
-# - Customizes FZF UI options, including border style, padding, margin, and color scheme.
-
-# Aliases:
-# - `vim`: Alias for `nvim`.
-# - `cpy`: Copies clipboard content using `xclip`.
-# - `psta`: Pastes clipboard content using `xclip`.
-# - `webcam`: Streams webcam video using `gphoto2` and `ffmpeg`.
-# - `sail`: Runs Laravel Sail if the `sail` file exists, otherwise defaults to `vendor/bin/sail`.
-# - `art`: Shortcut for `php artisan`.
-# - `tinker`: Shortcut for `php artisan tinker`.
-# - `seed`: Shortcut for `php artisan db:seed`.
-# - `serve`: Shortcut for `php artisan serve`.
-# - `sqlit`: Modifies `.env` file to use SQLite as the database connection.
-# - `fseed`: Shortcut for `php artisan migrate:fresh --seed`.
-
-# Function:
-# - `rebase`: Simplifies the process of performing an interactive Git rebase.
-#   - Usage:
-#     - `rebase`: Rebases the current branch interactively onto `origin/master`.
-#     - `rebase <branch>`: Rebases the current branch interactively onto `origin/<branch>`.
-#   - Notes:
-#     - Assumes the use of the Fish shell.
-#     - Requires the target branch to exist in the `origin` remote.
+# Add common binary paths to the PATH environment variable
 set -gx PATH /usr/local/bin /usr/local/sbin $PATH
 set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
 
-# Export MySQL 8.0 paths
+# Add MySQL 8.0 binary path to the PATH environment variable
 set -gx PATH /opt/homebrew/opt/mysql@8.0/bin $PATH
+
+# Set linker flags for MySQL 8.0 libraries
 set -gx LDFLAGS "-L/opt/homebrew/opt/mysql@8.0/lib"
+
+# Set preprocessor flags for MySQL 8.0 include paths
 set -gx CPPFLAGS "-I/opt/homebrew/opt/mysql@8.0/include"
 
-# Export Composer vendor bin
+# Add Composer's global vendor binaries to the PATH
 set -gx PATH ~/.composer/vendor/bin $PATH
 
-# Set the default editor to nvim
+# Set the default editor to Neovim
 set -gx EDITOR nvim
 
-# Set Git editor to nvim
+# Set Git editor to Neovim
 set -gx GIT_EDITOR nvim
 
 # Set the Neovim listen address for remote communication
 set -gx NVIM_LISTEN_ADDRESS /tmp/nvimsocket
 
-# Set the editor for Artisan to nvr (Neovim Remote)
+# Set the editor for Laravel Artisan's open-on-make feature to Neovim Remote
 set -gx ARTISAN_OPEN_ON_MAKE_EDITOR nvr
 
-# Set default FZF command to use ag (The Silver Searcher)
+# Configure FZF to use The Silver Searcher (ag) for file searching
 set -gx FZF_DEFAULT_COMMAND 'ag -u -g ""'
 
-# Set FZF options for UI customization
+# Customize FZF UI options
 set -gx FZF_DEFAULT_OPTS '
 --border=rounded
 --padding=0,1
@@ -78,27 +48,34 @@ set -gx FZF_DEFAULT_OPTS '
 --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef,gutter:-1,border:#1f2335
 '
 
+# Alias for Neovim
 alias vim "nvim"
+
+# Alias for copying clipboard content using xclip
 alias cpy "xclip -selection clipboard"
+
+# Alias for pasting clipboard content using xclip
 alias psta "xclip -o -selection clipboard"
+
+# Alias for streaming webcam video using gphoto2 and ffmpeg
 alias webcam "gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video2"
+
+# Alias for running Laravel Sail
 alias sail '[ -f sail ] && sail || vendor/bin/sail'
 
+# Alias for Laravel Artisan commands
 alias art "php artisan"
 alias tinker "art tinker"
 alias seed "art db:seed"
 alias serve "art serve"
+
+# Alias for modifying .env file to use SQLite as the database connection
 alias sqlit "sed -e 's/\(DB_.*\)/# \\1/g' -e 's/# \(DB_CONNECTION=\).*/\\1sqlite/g' -i .env"
+
+# Alias for running Laravel migrations with fresh seed
 alias fseed "art migrate:fresh --seed"
-# This function, `rebase`, simplifies the process of performing an interactive git rebase.
-# Usage:
-#   rebase            - Rebases the current branch interactively onto `origin/master`.
-#   rebase <branch>   - Rebases the current branch interactively onto `origin/<branch>`.
-# Arguments:
-#   <branch> (optional) - The name of the branch to rebase onto. If not provided, defaults to `master`.
-# Notes:
-#   - This function assumes you are using `fish` shell.
-#   - Ensure that the branch you are rebasing onto exists in the `origin` remote.
+
+# Function to simplify interactive Git rebase
 function rebase
     if test (count $argv) -eq 0
         git rebase -i origin/master
@@ -106,6 +83,8 @@ function rebase
         git rebase -i origin/$argv[1]
     end
 end
+
+# Function to add files to Git staging area
 function add
     if test (count $argv) -eq 0
         git add .
@@ -113,39 +92,26 @@ function add
         git add $argv
     end
 end
+
+# Alias for Git commit with a message
 alias com "git commit -m"
+
+# Alias for adding all changes and committing with a message
 alias ga "git add .; git commit -m $argv"
+
+# Alias for Git push
 alias gp "git push"
+
+# Alias for Git status
 alias gs "git status"
+
+# Function to create a WIP (Work In Progress) commit
 function wip
     git add -A
     git commit -m "[WIP]"
 end
-# The `giff` function is a custom Fish shell function for running `git diff` with additional options.
-# It supports both interactive and non-interactive modes.
-#
-# Usage:
-#   giff [OPTIONS] [ARGS]
-#
-# Options:
-#   -e              Enable interactive mode. Displays the diff output in a pager (`less`) with color.
-#   --com           Passes the `--com` argument to `git diff`.
-#   --staged        Passes the `--staged` argument to `git diff`.
-#   --cached        Passes the `--cached` argument to `git diff`.
-#
-# Arguments:
-#   Any additional arguments are passed directly to the `git diff` command.
-#
-# Examples:
-#   giff --staged
-#       Runs `git diff --staged`.
-#
-#   giff -e --cached
-#       Runs `git diff --cached` in interactive mode with colored output.
-#
-# Notes:
-#   - Interactive mode (`-e`) uses `less -R` to display the output with color.
-#   - If `-e` is not specified, the output is printed directly to the terminal.
+
+# Function to run Git diff with additional options
 function giff
     set args
     set interactive_mode 0
@@ -174,17 +140,7 @@ function giff
     end
 end
 
-# This function simplifies the process of checking out Git branches.
-# Usage:
-#   checkout                - Checks out the "master" branch.
-#   checkout <branch>       - Checks out the specified branch.
-#   checkout <branch> -n    - Creates and checks out a new branch with the specified name.
-# Arguments:
-#   <branch> - The name of the branch to checkout or create.
-#   -n       - Optional flag to create a new branch.
-# Notes:
-#   - If no arguments are provided, the function defaults to checking out the "master" branch.
-#   - If two arguments are provided and the second argument is "-n", a new branch is created.
+# Function to simplify Git branch checkout
 function checkout
     if test (count $argv) -eq 0
         git checkout master
@@ -195,6 +151,7 @@ function checkout
     end
 end
 
+# Function to reset Git changes and optionally clean untracked files
 function nah
     git reset --hard
 
@@ -203,6 +160,7 @@ function nah
     end
 end
 
+# Function to navigate to specific directories based on arguments
 function cdw
     set base_path $CTHULHU_BASE_PATH
 
@@ -216,18 +174,28 @@ function cdw
     end
 end
 
+# Alias for Neovim
 alias vi "nvim"
+
+# Alias for listing files with eza
 alias ls "eza -l $argv"
+
+# Alias for listing files as a tree with eza
 alias lss "eza -l --tree $argv"
+
+# Alias for killing all tmux sessions
 alias killmux "tmux kill-server"
 
+# Automatically attach to tmux session if available
 if type -q tmux
     and test -z "$TMUX"
         tmux attach -t default ^/dev/null; or tmux new-session -s default
 end
 
+# Alias for FZF
 alias f "fzf"
 
+# Function to manage tmux sessions
 function tmx
     if test (count $argv) -eq 1
         set selected $argv[1]
@@ -251,13 +219,15 @@ function tmx
     tmux new-session -c "$selected" -d -s "$dirname" && tmux switch-client -t "$dirname" || tmux new -c "$selected" -A -s "$dirname"
 end
 
+# Function to search command history using FZF
 function um
     history | fzf
 end
 
-
+# Alias for printing the current directory
 alias d "pwd"
 
+# Function to find and navigate to directories using FZF
 function ff
     if test (count $argv) -eq 1
         set search_dir $argv[1]
@@ -271,13 +241,13 @@ function ff
         cd "$selected"
     end
 end
+
+# Custom Fish shell prompt
 function fish_prompt
     set_color cyan
     echo -n "thearyanahmed"
     set_color yellow
     echo -n "#"
-    set_color green
-    # echo -n " \$ "
     set_color green
     echo -n " /"
     set_color blue
@@ -285,5 +255,6 @@ function fish_prompt
     echo -n " "
     set_color normal
 end
+
 # Enable vim keybindings for Fish shell
 fish_vi_key_bindings
