@@ -245,12 +245,12 @@ end
 # Custom Fish shell prompt
 function fish_prompt
     set_color cyan
-    echo -n "thearyanahmed"
+    echo -n "prophecy"
     set_color yellow
-    echo -n "#"
-    set_color green
+    echo -n " >_"  # Palestine flag emoji
+    set_color '#F0F8FF'
     echo -n " /"
-    set_color blue
+    set_color '#ebdbb2'
     echo -n (basename $PWD)
     echo -n " "
     set_color normal
