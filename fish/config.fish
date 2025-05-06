@@ -10,6 +10,8 @@ alias grep "grep --color=auto"
 # Add common binary paths to the PATH environment variable
 set -gx PATH /usr/local/bin /usr/local/sbin $PATH
 set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
+set -gx PATH /Users/paryan/go/bin $PATH
+set -gx fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
 # Add MySQL 8.0 binary path to the PATH environment variable
 set -gx PATH /opt/homebrew/opt/mysql@8.0/bin $PATH
@@ -104,6 +106,8 @@ alias gp "git push"
 
 # Alias for Git status
 alias gs "git status"
+
+alias clone "git clone"
 
 # Function to create a WIP (Work In Progress) commit
 function wip
@@ -258,3 +262,4 @@ end
 
 # Enable vim keybindings for Fish shell
 fish_vi_key_bindings
+
