@@ -1,0 +1,46 @@
+#dark
+background = #292522
+foreground = #ECE1D7
+cursor-color = #ECE1D7
+selection-background = #403A36
+selection-foreground = #ECE1D7
+palette = 0=#34302C
+palette = 1=#BD8183
+palette = 2=#78997A
+palette = 3=#E49B5D
+palette = 4=#7F91B2
+palette = 5=#B380B0
+palette = 6=#7B9695
+palette = 7=#C1A78E
+palette = 8=#867462
+palette = 9=#D47766
+palette = 10=#85B695
+palette = 11=#EBC06D
+palette = 12=#A3A9CE
+palette = 13=#CF9BC2
+palette = 14=#89B3B6
+palette = 15=#ECE1D7
+
+
+#light
+background = #F1F1F1
+foreground = #54433A
+cursor-color = #54433A
+selection-background = #D9D3CE
+selection-foreground = #54433A
+palette = 0=#E9E1DB
+palette = 1=#C77B8B
+palette = 2=#6E9B72
+palette = 3=#BC5C00
+palette = 4=#7892BD
+palette = 5=#BE79BB
+palette = 6=#739797
+palette = 7=#7D6658
+palette = 8=#A98A78
+palette = 9=#BF0021
+palette = 10=#3A684A
+palette = 11=#A06D00
+palette = 12=#465AA4
+palette = 13=#904180
+palette = 14=#3D6568
+palette = 15=#54433A

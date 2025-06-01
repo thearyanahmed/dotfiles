@@ -70,6 +70,7 @@ alias art "php artisan"
 alias tinker "art tinker"
 alias seed "art db:seed"
 alias serve "art serve"
+alias dbprod "mysql -h prod-codd-region-nyc-mysql.internal.digitalocean.com -u usr_paryan_ro -p apps"
 
 # Alias for modifying .env file to use SQLite as the database connection
 alias sqlit "sed -e 's/\(DB_.*\)/# \\1/g' -e 's/# \(DB_CONNECTION=\).*/\\1sqlite/g' -i .env"
@@ -228,6 +229,9 @@ function um
     history | fzf
 end
 
+# set an alias for ssh -i ~/.ssh/thearyanahmed nine@raspberrypi.local
+alias 2pi "ssh -i ~/.ssh/thearyanahmed nine@raspberrypi.local"
+
 # Alias for printing the current directory
 alias d "pwd"
 
@@ -255,7 +259,13 @@ function fish_prompt
     set_color '#F0F8FF'
     echo -n " /"
     set_color '#ebdbb2'
-    echo -n (basename $PWD)
+    set git_root (git rev-parse --show-toplevel 2>/dev/null)
+    if test -n "$git_root"
+        set branch (git symbolic-ref --short HEAD 2>/dev/null)
+        if test -n "$branch"
+            echo -n "[$branch]"
+        end
+    end
     echo -n " "
     set_color normal
 end
@@ -263,3 +273,18 @@ end
 # Enable vim keybindings for Fish shell
 fish_vi_key_bindings
 
+
+# write a function that echoss some tmux shortcuts
+function tmux_shortcuts
+    echo "Tmux Shortcuts:"
+    echo "  Ctrl-Space c     - Create a new window"
+    echo "  Ctrl-Space w     - List all windows"
+    echo "  Ctrl-Space n     - Switch to the next window"
+    echo "  Ctrl-Space p     - Switch to the previous window"
+    echo "  Ctrl-Space d     - Detach from the current session"
+    echo "  Ctrl-Space %     - Split the current pane vertically"
+    echo "  Ctrl-Space \"     - Split the current pane horizontally"
+    echo "  Ctrl-Space x     - Close the current pane"
+    echo "  Ctrl-Space [     - Enter copy mode (scroll through history)"
+    echo "  Ctrl-Space ]     - Paste copied text"
+end
