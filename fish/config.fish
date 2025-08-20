@@ -13,8 +13,26 @@ set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
 set -gx PATH /Users/paryan/go/bin $PATH
 set -gx fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_RUNTIME_DIR $HOME/.local/run
+
 # Add MySQL 8.0 binary path to the PATH environment variable
 set -gx PATH /opt/homebrew/opt/mysql@8.0/bin $PATH
+
+function _log
+    set msg $argv
+    set_color green
+    echo -n "[LOG] "
+    set_color normal
+    echo $msg
+end
+
+function !!
+    eval (history --max=1 | head -n1)
+end
 
 # Set linker flags for MySQL 8.0 libraries
 set -gx LDFLAGS "-L/opt/homebrew/opt/mysql@8.0/lib"
@@ -49,6 +67,26 @@ set -gx FZF_DEFAULT_OPTS '
 --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
 --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef,gutter:-1,border:#1f2335
 '
+
+function dotfiles
+    _log "Switching to ~/dev/thearyanahmed/dotfiles/"
+    cd ~/dev/thearyanahmed/dotfiles/
+    nvim .
+end
+
+if test -f $HOME/.private
+    for line in (cat $HOME/.private)
+        if string match -qr '^\s*#' -- $line
+            continue
+        end
+        if string match -qr '^\s*$' -- $line
+            continue
+        end
+        set key (string split -m1 '=' $line)[1]
+        set value (string split -m1 '=' $line)[2]
+        set -gx $key $value
+    end
+end
 
 # Alias for Neovim
 alias vim "nvim"
@@ -253,9 +291,7 @@ end
 # Custom Fish shell prompt
 function fish_prompt
     set_color cyan
-    echo -n "prophecy"
-    set_color yellow
-    echo -n " >_"  # Palestine flag emoji
+    echo -n "#"  # Palestine flag emoji
     set_color '#F0F8FF'
     echo -n " /"
     set_color '#ebdbb2'
@@ -288,3 +324,11 @@ function tmux_shortcuts
     echo "  Ctrl-Space [     - Enter copy mode (scroll through history)"
     echo "  Ctrl-Space ]     - Paste copied text"
 end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+
+# Added by Windsurf
+fish_add_path /Users/paryan/.codeium/windsurf/bin

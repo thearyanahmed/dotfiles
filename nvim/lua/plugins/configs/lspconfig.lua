@@ -85,22 +85,33 @@ lspconfig.gopls.setup {
         }
     }
 }
-
 -- rust stuff
 lspconfig.rust_analyzer.setup({
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  filetypes = {"rust"},
-  root_dir = util.root_pattern("Cargo.toml"),
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-        loadOutDirsFromCheck = true
-        },
-      procMacro = { enable = true },
+    on_attach = function(client, bufnr)
+        M.on_attach(client, bufnr)
+        -- Enable inlay hints if supported
+        if client.server_capabilities.inlayHintProvider then
+            vim.lsp.buf.inlay_hint(bufnr, true)
+        end
+    end,
+    capabilities = M.capabilities,
+    filetypes = {"rust"},
+    root_dir = util.root_pattern("Cargo.toml"),
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true
+            },
+            procMacro = { enable = true },
+            inlayHints = {
+                enable = true,
+                typeHints = true,
+                parameterHints = true,
+                chainingHints = true,
+            }
+        }
     }
-  }
 })
 
 
